@@ -1,13 +1,14 @@
 import { combineReducers, createStore, compose } from 'redux';
+import { cellReducer } from 'reducers';
 
 export var configure = () => {
 	
-	const reducer = () => {};
-	//const reducer = combineReducers({});
+	const reducer = combineReducers({
+		cells: cellReducer
+	});
 	
-	const initialState = {};
 	
-	const store = createStore(reducer, initialState, compose(
+	const store = createStore(reducer, compose(
 		window.devToolsExtension ? window.devToolsExtension() : f => f
 	));
 	
