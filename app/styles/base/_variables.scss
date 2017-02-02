@@ -1,3 +1,14 @@
 // Colors
 //$header-background: #184a4a;
 //$header-foreground: #fff;
+
+
+@mixin flex {
+	display: -webkit-flex;
+	display: flex;
+}
+
+@mixin cell-size {
+	width: 2.2em;
+	height: 2.2em;
+}

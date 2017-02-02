@@ -1,26 +1,27 @@
 import React from 'react';
+import Cell from 'Cell';
 import { connect } from 'react-redux';
-
-const GRID_DIMENSIONS = 10;
 
 export class Grid extends React.Component {
 	
+	render() {	
 
-	
-	render() {
+		console.log("Grid rerender");
+		var {cells} = this.props;
+		//console.log(cells);
+		
 		let generateGrid = () => {
 			
 			let grid = [];
 			
-			for (var i = 0; i < GRID_DIMENSIONS; i++) {				
+			for (let i = 0; i < cells.length; i++) {				
 				let row = [];
-				for (let j = 0; j < GRID_DIMENSIONS; j++) {
-				row.push(<td key={'col'+j}></td>);	
+				for (let j = 0; j < cells[i].length; j++) {
+					row.push(<td key={'col'+j}><Cell x={i} y={j} key={i+''+j} isAlive={cells[i][j].alive} /></td>);	
 				}			
 				grid.push(<tr key={'row'+i}>{row}</tr>)
 			}
 
-			console.log(grid);
 			return grid;		
 		}
 	
@@ -40,5 +41,6 @@ export class Grid extends React.Component {
 const mapStateToProps = (state) => {
 	return state;
 }
+
 
 export default connect(mapStateToProps)(Grid);

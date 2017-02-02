@@ -1,3 +1,10 @@
-.cell {
-	background-color: orange;
+.live-cell {
+	@include cell-size;
+	background-color: lawngreen;
 }
+
+.dead-cell {
+	@include cell-size;
+	background-color: #aaa;
+}
+
