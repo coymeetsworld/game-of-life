@@ -1,17 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {selectCell} from 'actions';
+import {selectCell } from 'actions';
 
 class Cell extends React.Component {
 	
 	
 	render() {
 		
-		let {dispatch, x, y, isAlive} = this.props;
-		
+		let {dispatch, x, y, cellClass} = this.props;
 		return (
-			<div className={isAlive ? 'live-cell': 'dead-cell'} onClick={() => {dispatch(selectCell(x,y))}}>
-			</div>
+			<td key={'col'+y} className={cellClass} onClick={() => {dispatch(selectCell(x,y))}}></td>
 		);
 	}
 }

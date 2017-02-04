@@ -1,31 +1,28 @@
 import React from 'react';
 import Cell from 'Cell';
 import { connect } from 'react-redux';
+import { selectCell } from 'actions';
 
 export class Grid extends React.Component {
 	
 	render() {	
 
 		console.log("Grid rerender");
-		var {cells} = this.props;
-		//console.log(cells);
+		var {dispatch, cells} = this.props;
 		
 		let generateGrid = () => {
 			
-			let grid = [];
+			return cells.map((row, rIndex) => {
+
+				let r = row.map((col, cIndex) => {						
+					return <Cell x={rIndex} y={cIndex} key={rIndex+''+cIndex} cellClass={cells[rIndex][cIndex].alive ? 'live-cell' : 'dead-cell'}/>
+				});
+				return <tr key={'row'+rIndex}>{r}</tr>	
+			});
 			
-			for (let i = 0; i < cells.length; i++) {				
-				let row = [];
-				for (let j = 0; j < cells[i].length; j++) {
-					row.push(<td key={'col'+j}><Cell x={i} y={j} key={i+''+j} isAlive={cells[i][j].alive} /></td>);	
-				}			
-				grid.push(<tr key={'row'+i}>{row}</tr>)
-			}
-
-			return grid;		
 		}
+			
 	
-
 		return (
 			<div className="grid-section">
 				<table className="grid">
