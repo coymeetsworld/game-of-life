@@ -1,6 +1,12 @@
 export const step = () => {
 	return {
-		type: 'STEP',
+		type: 'STEP'
+	}
+}
+
+export const randomize = () => {
+	return {
+		type: 'RANDOMIZE'
 	}
 }
 

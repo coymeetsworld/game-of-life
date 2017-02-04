@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {step} from 'actions';
+import {step, randomize} from 'actions';
 
 
 export class ControlPanel extends React.Component {
@@ -9,7 +9,8 @@ export class ControlPanel extends React.Component {
 		var { dispatch } = this.props;
 		return(
 			<div>
-				<button onClick={(e) => {e.preventDefault(); dispatch(step("HELLO")); }}>Step</button>	
+				<button onClick={(e) => {e.preventDefault(); dispatch(step()); }}>Step</button>	
+				<button onClick={(e) => {e.preventDefault(); dispatch(randomize()); }}>Randomize</button>	
 			</div>
 		);
 	}
