@@ -7,21 +7,16 @@ export class Grid extends React.Component {
 	
 	render() {	
 
-		console.log("Grid rerender");
 		var {dispatch, cells} = this.props;
 		
 		let generateGrid = () => {
-			
 			return cells.map((row, rIndex) => {
-
 				let r = row.map((col, cIndex) => {						
 					return <Cell x={cIndex} y={rIndex} key={cIndex+''+rIndex} cellClass={cells[cIndex][rIndex].alive ? 'live-cell' : 'dead-cell'}/>
 				});
 				return <tr key={'row'+rIndex}>{r}</tr>	
 			});
-			
 		}
-			
 	
 		return (
 			<div className="grid-section">
