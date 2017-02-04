@@ -15,7 +15,7 @@ export class Grid extends React.Component {
 			return cells.map((row, rIndex) => {
 
 				let r = row.map((col, cIndex) => {						
-					return <Cell x={rIndex} y={cIndex} key={rIndex+''+cIndex} cellClass={cells[rIndex][cIndex].alive ? 'live-cell' : 'dead-cell'}/>
+					return <Cell x={cIndex} y={rIndex} key={cIndex+''+rIndex} cellClass={cells[cIndex][rIndex].alive ? 'live-cell' : 'dead-cell'}/>
 				});
 				return <tr key={'row'+rIndex}>{r}</tr>	
 			});

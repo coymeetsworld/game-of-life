@@ -1,6 +1,6 @@
 import { combineReducers, createStore, compose } from 'redux';
 import { cellReducer } from 'reducers';
-const GRID_DIMENSIONS = 25;
+const GRID_DIMENSIONS = 15;
 
 export var configure = () => {
 	

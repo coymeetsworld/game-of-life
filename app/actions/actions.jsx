@@ -1,7 +1,6 @@
 export const step = () => {
 	return {
 		type: 'STEP',
-		someState: 'butterfly'
 	}
 }
 
