@@ -17,3 +17,21 @@ export const selectCell = (cellX, cellY) => {
 		cellY
 	}
 }
+
+export const startSimulation = () => {
+	return {
+		type: 'START_SIMULATION'
+	}
+}
+
+export const pauseSimulation = () => {
+	return {
+		type: 'PAUSE_SIMULATION'
+	}
+}
+
+export const resumeSimulation = () => {
+	return {
+		type: 'RESUME_SIMULATION'
+	}
+}

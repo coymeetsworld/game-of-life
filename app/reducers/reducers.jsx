@@ -44,58 +44,105 @@ export const willReproduce = (state, cellX, cellY) => {
 }
 
 
+export const step = (state) => {
+	return state.map((col, colIndex) => {						
+		return col.map((row, rowIndex) => {
+			if (state[colIndex][rowIndex].alive) {
+				if (willDie(state, colIndex, rowIndex)) {
+					return {
+						alive: false
+					};
+				} else {
+					return row;
+				}
 
+			} else {
+				if (willReproduce(state, colIndex, rowIndex)) {
+					return {
+						alive: true
+					};
+				} else {
+					return row;
+				}
+				
+			}
+		});
+	});
+}
+
+let grid;
 export const cellReducer = (state = {}, action) => {
 	
 	switch (action.type) {
-		
 		case 'STEP':
-			return state.map((col, colIndex) => {						
-				return col.map((row, rowIndex) => {
-					if (state[colIndex][rowIndex].alive) {
-						if (willDie(state, colIndex, rowIndex)) {
-							return {
-								alive: false
-							};
-						} else {
-							return row;
-						}
+			return {
+				grid: step(state.grid),
+				simulationState: state.simulationState,
+				generation: state.generation + 1,
+			}
 
-					} else {
-						if (willReproduce(state, colIndex, rowIndex)) {
-							return {
-								alive: true
-							};
-						} else {
-							return row;
-						}
-						
-					}
-				});
-			});
-			
 		case 'RANDOMIZE':			
-			return state.map((col) => {
+			grid = state.grid.map((col) => {
 				return col.map((row) => {						
 					return {
 						alive: Math.round(Math.random())
 					}
 				});	
 			});
+			return {
+				grid,
+				simulationState: 'STOPPED',
+				generation: 0,
+			}
 
 		case 'SELECT_CELL':
-			return state.map((col, colIndex) => {
+			grid = state.grid.map((col, colIndex) => {
 				if (colIndex !== action.cellX) { return col; }	
 				return col.map((row, rowIndex) => {
 					if (rowIndex === action.cellY) {
 						return {
-							alive: !state[colIndex][rowIndex].alive
+							alive: !state.grid[colIndex][rowIndex].alive
 						};
 					}	
 					return row;
 				});
 			});
 			
+			return {
+				grid,
+				simulationState: 'PAUSED',
+				generation: state.generation,
+			}
+			
+			
+		case 'START_SIMULATION':
+			console.log("Start simulation");
+			
+			return {
+				grid: state.grid,
+				simulationState: 'RUNNING',
+				generation: state.generation,
+			};
+			
+		case 'PAUSE_SIMULATION':
+			console.log("Pausing simulation");
+			
+			return {
+				grid: state.grid,
+				simulationState: 'PAUSED',
+				generation: state.generation,
+			};
+			
+		case 'RESUME_SIMULATION':
+			console.log("Resuming simulation");
+			console.log(state);
+			
+			return {
+				grid: state.grid,
+				simulationState: 'RUNNING',
+				generation: state.generation,
+			};
+
 		default:
 			return state;	
 	}

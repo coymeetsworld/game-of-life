@@ -1,11 +1,11 @@
 import { combineReducers, createStore, compose } from 'redux';
-import { cellReducer } from 'reducers';
-const GRID_DIMENSIONS = 15;
+import { cellReducer, timerReducer } from 'reducers';
+const GRID_DIMENSIONS = 30;
 
 export var configure = () => {
 	
 	const reducer = combineReducers({
-		cells: cellReducer,
+		cells: cellReducer
 	});
 	
 	let defaultCells = new Array(GRID_DIMENSIONS);
@@ -17,8 +17,10 @@ export var configure = () => {
 				}
 			}
 	}
+
 	
-	let initialState = { 'cells': defaultCells };
+	let initialState = { cells: {grid: defaultCells, simulationState: 'STOPPED', generation: 0 } };
+
 	
 	const store = createStore(reducer, initialState, compose(
 		window.devToolsExtension ? window.devToolsExtension() : f => f
