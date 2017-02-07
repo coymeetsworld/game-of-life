@@ -4,12 +4,10 @@ import {selectCell } from 'actions';
 
 class Cell extends React.Component {
 	
-	
 	render() {
-		
 		let {dispatch, x, y, cellClass} = this.props;
 		return (
-			<td key={'col'+y} className={cellClass} onClick={() => {dispatch(selectCell(x,y))}}></td>
+			<td key={'col' + y} className={cellClass} onClick={() => {dispatch(selectCell(x,y))}}></td>
 		);
 	}
 }

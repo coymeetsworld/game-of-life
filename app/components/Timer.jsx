@@ -6,7 +6,6 @@ import {step} from 'actions';
 export class Timer extends React.Component {
 	
 	componentDidMount() {
-		console.log("Timer mounted");
 		this.timer = setInterval(() => {
 			this.props.dispatch(step());
 		}, 500);
@@ -38,9 +37,7 @@ export class Timer extends React.Component {
 
 	render() {
 		return(
-			<div>
 				<span>Generation: {this.props.cells.generation}</span>	
-			</div>	
 		)
 	}
 }

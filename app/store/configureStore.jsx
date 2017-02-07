@@ -1,6 +1,6 @@
 import { combineReducers, createStore, compose } from 'redux';
 import { cellReducer, timerReducer } from 'reducers';
-const GRID_DIMENSIONS = 30;
+const GRID_DIMENSIONS = 50;
 
 export var configure = () => {
 	
@@ -13,13 +13,12 @@ export var configure = () => {
 			defaultCells[i] = new Array(GRID_DIMENSIONS);
 			for (let j = 0; j < GRID_DIMENSIONS; j++) {
 				defaultCells[i][j] = {
-					alive : false
+					alive: Math.round(Math.random())
 				}
 			}
 	}
 
-	
-	let initialState = { cells: {grid: defaultCells, simulationState: 'STOPPED', generation: 0 } };
+	let initialState = { cells: {grid: defaultCells, simulationState: 'RUNNING', generation: 0 } };
 
 	
 	const store = createStore(reducer, initialState, compose(

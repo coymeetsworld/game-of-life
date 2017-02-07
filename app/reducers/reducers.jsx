@@ -82,15 +82,8 @@ export const cellReducer = (state = {}, action) => {
 			}
 
 		case 'RANDOMIZE':			
-			grid = state.grid.map((col) => {
-				return col.map((row) => {						
-					return {
-						alive: Math.round(Math.random())
-					}
-				});	
-			});
 			return {
-				grid,
+				grid : action.newRandomGrid,
 				simulationState: 'STOPPED',
 				generation: 0,
 			}

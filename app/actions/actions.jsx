@@ -4,9 +4,10 @@ export const step = () => {
 	}
 }
 
-export const randomize = () => {
+export const displayRandomGrid = (newRandomGrid) => {
 	return {
-		type: 'RANDOMIZE'
+		type: 'RANDOMIZE',
+		newRandomGrid
 	}
 }
 

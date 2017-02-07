@@ -5,6 +5,11 @@ import { selectCell } from 'actions';
 
 export class Grid extends React.Component {
 	
+	
+	componentDidMount() {			
+			
+	}
+	
 	render() {	
 
 		let {dispatch, cells} = this.props;
