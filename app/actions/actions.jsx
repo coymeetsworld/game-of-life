@@ -36,3 +36,9 @@ export const resumeSimulation = () => {
 		type: 'RESUME_SIMULATION'
 	}
 }
+
+export const clearSimulation = () => {
+	return {
+		type: 'CLEAR_SIMULATION'
+	}
+}

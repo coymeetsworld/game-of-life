@@ -37,7 +37,7 @@ export class Timer extends React.Component {
 
 	render() {
 		return(
-				<span>Generation: {this.props.cells.generation}</span>	
+				<span className="gen-counter">Generation: {this.props.cells.generation}</span>	
 		)
 	}
 }

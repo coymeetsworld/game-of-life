@@ -128,12 +128,27 @@ export const cellReducer = (state = {}, action) => {
 			
 		case 'RESUME_SIMULATION':
 			console.log("Resuming simulation");
-			console.log(state);
 			
 			return {
 				grid: state.grid,
 				simulationState: 'RUNNING',
 				generation: state.generation,
+			};
+
+		case 'CLEAR_SIMULATION':
+			console.log("Clear simulation");
+			grid = state.grid.map((col, colIndex) => {
+				return col.map((row, rowIndex) => {
+						return {
+							alive: false
+						};
+				});
+			});
+				
+			return {
+				grid,
+				simulationState: 'STOPPED',
+				generation: 0,
 			};
 
 		default:

@@ -4,7 +4,7 @@ import FooterBar from 'FooterBar';
 import ControlPanel from 'ControlPanel';
 
 const App = () => (
-	<div>
+	<div className="main-app">
 		<h1>Game of Life</h1>	
 		<ControlPanel/>
 		<Grid/>
