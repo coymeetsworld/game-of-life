@@ -9,3 +9,6 @@ FreeCodeCamp React project in the Data Visualization curriculum to build the Gam
 
 
 *[link to project description](https://www.freecodecamp.com/challenges/build-the-game-of-life)*
+
+## Working Demo
+*[https://coymeetsworld.github.io/game-of-life/](https://coymeetsworld.github.io/game-of-life/)*
